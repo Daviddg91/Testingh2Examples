@@ -1,3 +1,14 @@
+create table if not exists Prices (
+	id int NOT NULL AUTO_INCREMENT,
+    brand_id int,
+    start_date varchar(255),
+    end_date varchar(255),
+    price_list int,
+    product_id int,
+    priority int,
+    price int ,
+    curr varchar(255)
+);
 INSERT INTO Prices (brand_id, start_date, end_date, price_list, product_id, priority, price, curr) VALUES
 (1, PARSEDATETIME('2020-06-14-00.00.00','yyyy-MM-dd-HH.mm.ss'), PARSEDATETIME('2020-12-31-23.59.59','yyyy-MM-dd-HH.mm.ss'), 1, 35455, 0, 35.50, 'EUR'),
 (1, PARSEDATETIME('2020-06-14-15.00.00','yyyy-MM-dd-HH.mm.ss'), PARSEDATETIME('2020-06-14-18.30.00','yyyy-MM-dd-HH.mm.ss'), 2, 35455, 1, 25.45, 'EUR'),

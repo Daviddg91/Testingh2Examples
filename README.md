@@ -4,7 +4,7 @@
 Api Rest links:
 ---------------------------
 
-localhost:8080/prices/products/35455/date/2020-06-14/brand/1
+localhost:8080/prices/products/35455/date/2020-06-14-10.00.00/brand/1
 
 
 

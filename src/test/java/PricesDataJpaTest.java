@@ -26,34 +26,10 @@ import repository.PricesRepository;
 
 //@TestPropertySource(properties = {"spring.config.location=classpath:application-test.yml" })
 @ContextConfiguration(classes=DemoApplication.class)
-//@Configuration
-//@ComponentScan(basePackages = { "es.juntadeandalucia.cipsc.gesstiona.discapacidad" })
-//@SpringBootTest(classes = {GssDiscapacidadApplication.class})
-//@SpringBootTest()
 @AutoConfigureTestDatabase(replace = AutoConfigureTestDatabase.Replace.NONE)
 @ActiveProfiles("test")
 @DataJpaTest
 public class PricesDataJpaTest {
-//	@Spy
-//	@Autowired
-//	private PricesController perroGuiaController;
-//
-//	@Spy
-//	@Autowired
-//	private PricesServiceImpl perroGuiaService;
-//
-//	@Spy
-//	@Autowired
-//	private PricesBOImpl perroGuiaBO;
-//	
-//	@BeforeEach
-//	public void setUp() {
-//		MockitoAnnotations.initMocks(this);
-//
-//		perroGuiaController.setPerroService(perroGuiaService);
-//		perroGuiaService.setPerroBO(perroGuiaBO);
-//		perroGuiaBO.setPerroRepository(perroGuiaRepository);
-//	}
 	
     @Autowired
 	private PricesRepository pricesRepository;
@@ -72,8 +48,8 @@ public class PricesDataJpaTest {
     @DisplayName("Prueba guardar un prices")
     void guardarRazaPrices() {
 		Prices prices1= new Prices();
-		prices1.setId(1);
-		prices1.setProduct_id((long) 123);
+		prices1.setId((long)1423);
+		prices1.setProduct_id((long) 1235678);
 		prices1.setBrand_id(1);
 		prices1.setPrice_list((long) 5);
 		prices1.setCurr("EUR");
@@ -82,10 +58,14 @@ public class PricesDataJpaTest {
 		prices1.setPrice(42);
 		prices1.setPriority(2);
 		
-		pricesRepository.save(prices1);
+		Prices pricesOutput = pricesRepository.save(prices1);
 		
-        Optional<Prices> price1output = pricesRepository.findById(prices1.getId());
-        assertThat(price1output).isNotEmpty();
+        Optional<Prices> price1output = pricesRepository.findById(pricesOutput.getId());
+        
+        prices1.setId(pricesOutput.getId());
+        
+		assertThat(price1output.get()).usingRecursiveComparison().isEqualTo(prices1);
+
     }
     
    

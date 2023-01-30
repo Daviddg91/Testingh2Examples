@@ -1,6 +1,5 @@
 package entitys;
 
- 
 import java.util.Date;
 
 import javax.persistence.Column;
@@ -11,8 +10,6 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 import org.springframework.format.annotation.DateTimeFormat;
-
-
 
 @Entity
 
@@ -26,26 +23,26 @@ public class Prices {
 //	ayor prioridad (mayor valor numérico).
 //	PRICE: precio final de venta.
 //	CURR: iso de la moneda.
-	
-	@GeneratedValue(strategy=GenerationType.IDENTITY)
-	@Column(name = "id", updatable = false, nullable = false)
+
 	@Id
+	@GeneratedValue(strategy = GenerationType.AUTO)
 	private long id;
- 
+
+	@Column(name = "brand_id")
 	private long brand_id;
-	
+
 	@DateTimeFormat(pattern = "yyyy-MM-dd-HH.mm.ss")
 	private Date start_date;
-	
+
 	@DateTimeFormat(pattern = "yyyy-MM-dd-HH.mm.ss")
 	private Date end_date;
-	
+
 	private Long price_list;
-	
+
 	private Long product_id;
-	
+
 	private int priority;
-	
+
 	private int price;
 
 	private String curr;
@@ -122,7 +119,4 @@ public class Prices {
 		this.curr = curr;
 	}
 
-	
-
-	
 }
